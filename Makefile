@@ -10,7 +10,7 @@ testdata:
 tinygo_sources := $(wildcard examples/*/*.go) $(wildcard internal/test/testdata/*/*.go) $(wildcard internal/test/testdata/*/*/*.go) $(wildcard internal/test/testdata/*/*/*/*.go)
 build.tinygo: $(tinygo_sources)
 	@for f in $^; do \
-	    tinygo build -o $$(echo $$f | sed -e 's/\.go/\.wasm/') -scheduler=none --no-debug -target=wasi $$f; \
+	    tinygo build -o $$(echo $$f | sed -e 's/\.go/\.wasm/') -scheduler=none -target=wasi $$f; \
 	done
 
 wat_sources := $(wildcard internal/test/testdata/*/*/*.wat)

@@ -121,6 +121,9 @@ var BinE2EFeaturesTinyGo []byte
 //go:embed testdata/e2e/tinygo/handle_response/main.wasm
 var BinHandleResponse []byte
 
+//go:embed testdata/e2e/tinygo/regex/main.wasm
+var BinRegex []byte
+
 //go:embed testdata/e2e/tinygo/log/main.wasm
 var BinE2ELog []byte
 

@@ -127,6 +127,21 @@ func Test_EndToEnd(t *testing.T) {
 				require.Equal(t, "43", string(content))
 			},
 		},
+		// Failed with tinygo version 0.28.1 and 0.29.0. (darwin/amd64) (using go version go1.20.7 and LLVM version 15.0.0)
+		{
+			name: "regex",
+			bin:  test.BinRegex,
+			request: func(url string) (req *http.Request) {
+				req, _ = http.NewRequest(http.MethodGet, url, nil)
+				return
+			},
+			next: http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				w.WriteHeader(200)
+			}),
+			test: func(t *testing.T, content []byte, logMessages []string, stdout, stderr string) {
+				require.Equal(t, "43", string(content))
+			},
+		},
 		{
 			name: "log",
 			bin:  test.BinE2ELog,
